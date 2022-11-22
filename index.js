@@ -37,6 +37,6 @@ app.post('/',async (req,res) => {
     const newReview = {author: 'Fanessa',date:'12-1-2022',program:'test bootcamp',review:[{overallExp:5},{curriculum:5},{instruction:5},{jobAssist:5}]}
     console.log('req.body ->',req.body)
 
-    await posts.insertOne(newReview)
+    await postsnode.insertOne(newReview)
     res.send('item was added')
 });
