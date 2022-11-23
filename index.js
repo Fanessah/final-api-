@@ -28,15 +28,20 @@ app.listen(PORT, () => {
 
 // CREATE MY ROUTES HERE 
 
-app.get('/',(req,res) => {
-    res.status(200).send("Hello World");
+app.get('/', async (req,res) => {
+    const allReviews = await posts.find().toArray()
+    res.send(allReviews);
 })
+
+// app.get('/',(req,res) => {
+//     res.status(200).send("Hello World");
+// })
 
 // ADD REVIEW 
 app.post('/',async (req,res) => {
-    const newReview = {author: 'Fanessa',date:'12-1-2022',program:'test bootcamp',review:[{overallExp:5},{curriculum:5},{instruction:5},{jobAssist:5}]}
+    const newReviews = {author: 'Fanessa',date:'12-1-2022',program:'test bootcamp',review:[{overallExp:5},{curriculum:5},{instruction:5},{jobAssist:5}]}
     console.log('req.body ->',req.body)
 
-    await postsnode.insertOne(newReview)
+    await posts.insertOne(newReviews)
     res.send('item was added')
 });
