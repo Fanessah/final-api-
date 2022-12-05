@@ -24,11 +24,10 @@ app.get('/allreviews', async (req, res) => {
 })
 
 // ADD REVIEW 
-app.post('/', async (req, res) => {
-    const newReviews = { author: 'Fanessa', date: '12-1-2022', program: 'test bootcamp', curriculum: 'lorem lorem', instruction: 'lorem lorem', jobAssist: 'lorem lorem', overallExp: 'lorem lorem lorem lorem lorem lorem' }
+app.post('/addreview', async (req, res) => {
+    // const newReviews = { author: 'Fanessa', date: '12-1-2022', program: 'test bootcamp', curriculum: 'lorem lorem', instruction: 'lorem lorem', jobAssist: 'lorem lorem', overallExp: 'lorem lorem lorem lorem lorem lorem' }
     console.log('req.body ->', req.body)
-
-    await posts.insertOne(newReviews)
+    await posts.insertOne(req.body)
     res.send('item was added')
 });
 
